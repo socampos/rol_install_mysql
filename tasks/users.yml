@@ -1,0 +1,8 @@
+---
+- name: Creacion de usuarios de base de datos
+  community.mysql.mysql_user:
+    name: "{{ item.name }}"
+    password: "{{ item.password }}"
+    priv: 'app.*:ALL'
+    state: present
+  with_items: "{{ mysql_users }}"

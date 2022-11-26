@@ -1,0 +1,19 @@
+---
+# tasks file for roles/install_mysql
+- include_tasks: setup-RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
+- name: Iniciando servicio mysql_packages
+  ansible.builtin.service:
+    name: mariadb
+    state: started
+    enabled: true
+
+- name: Secure Installation
+  include_tasks: secure-installation.yml
+
+- name: Creacion de bases de datos
+  include_tasks: database.yml
+
+- name: Creacion de usuario de base de datos
+  include_tasks: users.yml

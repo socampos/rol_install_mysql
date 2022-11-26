@@ -1,0 +1,8 @@
+---
+# vars file for roles/install_mysql
+mysql_packages:
+  - mariadb
+  - mariadb-server
+  - python3-PyMySQL
+mysql_databases:
+  - name: app
